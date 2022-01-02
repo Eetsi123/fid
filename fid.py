@@ -244,6 +244,10 @@ class FaceitTracker:
                     if any_user_in(voice_channel)),
                 None
             )
+            if voice_channel is None:
+                logging.warning('failed to find a voice channel in {} with at least one of {}'.format(guild.name, users))
+                return
+
             voice_client = await voice_channel.connect()
 
 client                      = discord.Client()
