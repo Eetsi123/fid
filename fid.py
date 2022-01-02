@@ -2,6 +2,7 @@ from config import DISCORD_BOT_TOKEN
 from config import FACEIT_API_KEY
 from config import STEAM_WEB_API_KEY
 from config import STEAM_PROFILES
+from config import AUDIO_SOURCE
 from config import AUDIO_FILE
 
 import asyncio, logging
@@ -256,6 +257,20 @@ class FaceitTracker:
                 client.loop.create_task(voice_client.disconnect())
 
             voice_client.play(discord.FFmpegPCMAudio(AUDIO_FILE), after = after)
+
+if AUDIO_SOURCE is not None:
+    import youtube_dl
+    ydl_opts = {
+        'format': 'bestaudio/best',
+        'postprocessors': [{
+            'key': 'FFmpegExtractAudio',
+            'preferredcodec': 'mp3',
+            'preferredquality': '192',
+        }],
+        'outtmpl': AUDIO_FILE,
+    }
+    with youtube_dl.YoutubeDL(ydl_opts) as ydl:
+        ydl.download([AUDIO_SOURCE])
 
 client                      = discord.Client()
 client.intents.voice_states = True

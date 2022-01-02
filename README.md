@@ -1,10 +1,11 @@
 Quickstart
 ==========
-1. Make sure `ffmpeg` is in `PATH` or next to `fid.py`.
-1. `pip install discord.py[voice]`
-2. `cp config.py.example config.py`
-3. Fill `config.py`.
-4. `python fid.py`
+1. Modify `config.py`.
+2. `pip install discord.py[voice] youtube_dl`
+3. Ensure `ffmpeg` is in `PATH` or next to `fid.py`
+3. `python fid.py`
+
+`youtube_dl` is not required if sound is played from a local file.
 
 License
 =======
