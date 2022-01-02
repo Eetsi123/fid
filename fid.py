@@ -246,8 +246,8 @@ class FaceitTracker:
                 None
             )
             if voice_channel is None:
-                logging.warning('failed to find a voice channel in {} with at least one of {}'.format(guild.name, users))
-                return
+                logging.info('couldn\'t find a voice channel in {} with at least one of {}'.format(guild.name, users))
+                continue
 
             voice_client = await voice_channel.connect()
             def after(error):
