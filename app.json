@@ -1,0 +1,17 @@
+{
+    "env" : {
+        "DISCORD_BOT_TOKEN": {
+            "description": "Discord bot token from https://discord.com/developers/applications"
+        },
+        "FACEIT_API_KEY": {
+            "description": "FACEIT Data API key from https://developers.faceit.com/apps"
+        },
+        "STEAM_WEB_API_KEY": {
+            "description": "Steam Web API key from https://steamcommunity.com/dev/apikey"
+        }
+    },
+    "buildpacks": [
+        { "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git" },
+        { "url": "heroku/python" }
+    ]
+}
