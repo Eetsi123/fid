@@ -1,7 +1,8 @@
-from secrets import DISCORD_BOT_TOKEN
-from secrets import FACEIT_API_KEY
-from secrets import STEAM_WEB_API_KEY
-from secrets import STEAM_PROFILES
+from config import DISCORD_BOT_TOKEN
+from config import FACEIT_API_KEY
+from config import STEAM_WEB_API_KEY
+from config import STEAM_PROFILES
+from config import AUDIO_FILE
 
 import asyncio, logging
 import discord, aiohttp
@@ -237,7 +238,7 @@ class FaceitTracker:
         def any_user_in(vc):
            vc_users = map(str, vc.members)
            return any(user in vc_users for user in users)
-    
+
         for guild in client.guilds:
             voice_channel = next(
                 (voice_channel for voice_channel in guild.voice_channels
@@ -249,6 +250,12 @@ class FaceitTracker:
                 return
 
             voice_client = await voice_channel.connect()
+            def after(error):
+                if error:
+                    logging.error(error)
+                client.loop.create_task(voice_client.disconnect())
+
+            voice_client.play(discord.FFmpegPCMAudio(AUDIO_FILE), after = after)
 
 client                      = discord.Client()
 client.intents.voice_states = True

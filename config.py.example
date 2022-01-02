@@ -7,3 +7,5 @@ STEAM_PROFILES    = {
     'DISCORD#1234': 'https://steamcommunity.com/id/STEAMPROFILE',
     'ANOTHER#0987': 'https://steamcommunity.com/profiles/12345678909876543',
 }
+
+AUDIO_FILE        = 'example.mp3'
