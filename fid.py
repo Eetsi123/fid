@@ -88,8 +88,8 @@ class FaceitTracker:
                     if not users:
                         logging.info('stop tracking match {}: no tracked users'.format(match))
                         del self.matches[match]
-                # The user can only be in one match at a time.
-                break
+                    # The user can only be in one match at a time.
+                    break
 
     # Returns the Discord usernames of the players whose match just begun.
     async def update(self) -> [str]:
